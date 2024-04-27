@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
-      Just another template
-      <Button>Click me</Button>
+      <ul>
+        <Link href="/people">People</Link>
+      </ul>
     </main>
   );
 }

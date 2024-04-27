@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site-config";
+import { SiteHeader } from "@/components/navigation/site-header";
+import { SiteFooter } from "@/components/navigation/site-footer";
+import { QueryClientWrapper } from "@/providers/query-client";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <QueryClientWrapper>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </QueryClientWrapper>
+      </body>
     </html>
   );
 }
